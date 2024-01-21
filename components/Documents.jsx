@@ -1,8 +1,18 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
-
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 const Documents = ({}) => {
+  const [isChecked1, setChecked1] = React.useState(false);
+  const [isChecked2, setChecked2] = React.useState(false);
+
+  const handleCheckbox1Press = () => {
+    setChecked1(!isChecked1);
+  };
+
+  const handleCheckbox2Press = () => {
+    setChecked2(!isChecked2);
+  };
   return (
     <View style={styles.documentsBlock}>
       <Text style={styles.mainTitle}>Документы</Text>
@@ -16,9 +26,30 @@ const Documents = ({}) => {
         <Text style={styles.documentItem}>Согласие на обработку персональных данных</Text>
       </View>
 
-      <View>
-
+      <View style={styles.checkBox}>
+      <BouncyCheckbox
+        size={10}
+        fillColor="red"
+        unfillColor='#D5E1E8'
+        text="Я ознакомлен(а) и согласен(а) с Договором присоединения по предоставлению микрокредита и Заявлением о предоставлении микрокредита, а также с вышеперечисленным согласиями и обязательствами."
+        textStyle={{ fontSize: 8, fontWeight: '400', color: '#071526', letterSpacing: 0.15, textDecorationLine: 'none' }}
+        onPress={handleCheckbox1Press}
+        innerIconStyle={isChecked1 ? { display: 'none' } : {borderWidth: 0}}
+      />
+      <BouncyCheckbox
+        size={10}
+        style={{ marginTop: 20 }}
+        fillColor="red"
+        unfillColor='#D5E1E8'
+        text="У меня есть электронная цифровая подпись"
+        iconStyle={{ borderColor: "red" }}
+        textStyle={{ fontSize: 8, fontWeight: '400', color: '#071526', letterSpacing: 0.15, textDecorationLine: 'none' }}
+        onPress={handleCheckbox2Press}
+        innerIconStyle={isChecked2 ? { display: 'none' } : {borderWidth: 0}}
+      />
+  
       </View>
+      
     </View>
   )
 };
@@ -59,7 +90,8 @@ const styles = StyleSheet.create({
   documentsStack: {
     display: 'flex',
     gap: 20,
-    marginTop: 20
+    marginTop: 20,
+    marginBottom: 20
   },
   documentItem: {
     color: '#8FADBF',
@@ -69,6 +101,12 @@ const styles = StyleSheet.create({
 
     letterSpacing: 0.15,
     textDecorationLine: 'underline',
+  },
+  checkBox: {
+    display: 'flex',
+    width: '100%',
+    minHeight: 50,
+    // backgroundColor: 'grey'
   }
 });
 

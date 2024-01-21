@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, Modal, TouchableOpacity, FlatList, StyleSheet,Image, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, Modal, TouchableOpacity, FlatList, StyleSheet,Image, TouchableWithoutFeedback, ScrollView } from 'react-native';
 import menuDots from '../assets/menuDots.png'
 
 const CategorySelector = () => {
@@ -35,6 +35,8 @@ const CategorySelector = () => {
     }
   };
 
+
+
   const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0, width: 0, height: 0 });
 
   return (
@@ -43,6 +45,7 @@ const CategorySelector = () => {
         animationType="fade"
         transparent={true}
         visible={isModalVisible}
+        
         onRequestClose={() => setModalVisible(false)}
       >
         <TouchableOpacity

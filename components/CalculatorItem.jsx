@@ -2,8 +2,10 @@ import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import buttonMinus from "../assets/buttonMinus.png";
 import buttonPlus from "../assets/buttonPlus.png";
-import { Slider } from "@react-native-assets/slider";
-
+// import { Slider } from "@react-native-assets/slider";
+import { PanGestureHandler, State } from "react-native-gesture-handler";
+import Slider from '@react-native-community/slider';
+import blackThumb from '../assets/blackThumb.png'
 const CalculatorItem = ({
   value,
   onDecrease,
@@ -14,6 +16,7 @@ const CalculatorItem = ({
   step,
   rangeText,
 }) => {
+  
   return (
     <View style={styles.calculatorItem}>
       <View style={styles.calculatorButtonSide}>
@@ -30,22 +33,21 @@ const CalculatorItem = ({
         </TouchableOpacity>
       </View>
 
-      <Slider
-        value={(value - minValue) / (maxValue - minValue)}
-        style={styles.slider}
-        thumbTintColor="#071526"
-        thumbSize={20}
-        outboundColor="black"
-        inboundColor="grey"
-        onValueChange={(sliderValue) =>
-          onSlideChange(
-            Math.round(sliderValue * (maxValue - minValue) + minValue)
-          )
-        }
-        minimumTrackTintColor="#071526"
-        maximumTrackTintColor="#B7B7B7"
-        step={step}
-      />
+      <PanGestureHandler >
+        <Slider
+          value={(value - minValue) / (maxValue - minValue)}
+          onValueChange={(sliderValue) =>
+            onSlideChange(
+              Math.round(sliderValue * (maxValue - minValue) + minValue)
+            )
+          }
+          step={step}
+          thumbImage={blackThumb}
+          minimumTrackTintColor="#071526"
+          maximumTrackTintColor="#B7B7B7"
+          style={styles.slider}
+        />
+      </PanGestureHandler>
     </View>
   );
 };
@@ -90,10 +92,12 @@ const styles = StyleSheet.create({
   slider: {
     display: "flex",
     position: "absolute",
-    bottom: 0,
+    bottom: -20,
     width: 320,
     left: 22,
     height: 10,
+    // backgroundColor: 'red',
+    
   },
 });
 

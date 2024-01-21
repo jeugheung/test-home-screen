@@ -36,7 +36,7 @@ const Carousel = () => {
             : { ...styles.card, width: 125 };
 
         return (
-          <TouchableOpacity style={cardStyle}>
+          <TouchableOpacity style={cardStyle} activeOpacity={1}>
             {/* <Text>{item.title}</Text> */}
             <Image source={item.image} style={styles.image}></Image>
           </TouchableOpacity>
