@@ -11,11 +11,17 @@ import creditTabBar from "../assets/tab-bar-icons/credit-tab.png";
 import notificationTabBar from "../assets/tab-bar-icons/notification-tab.png";
 import profileTabBar from "../assets/tab-bar-icons/profile-tab.png";
 
+
+import { useNavigation } from '@react-navigation/native';
+import CreditApplication from "../screens/CreditApplication";
+import CreditConfirmation from "../screens/CreditConfirmation";
+
 // TabBar
 const Tabs = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 function HomeStack() {
+  const navigation = useNavigation()
   return (
     <Stack.Navigator
       screenOptions={{
@@ -23,6 +29,8 @@ function HomeStack() {
       }}
     >
       <Stack.Screen name="Home" component={HomePage} />
+      <Stack.Screen name="CreditApplication" component={CreditApplication} />
+      <Stack.Screen name="CreditConfirmation" component={CreditConfirmation} />
     </Stack.Navigator>
   );
 }

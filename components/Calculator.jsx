@@ -8,8 +8,10 @@ import {
 } from "react-native";
 
 import CalculatorItem from "./CalculatorItem";
+import { useNavigation } from '@react-navigation/native';
 
 const Calculator = () => {
+  const navigation = useNavigation()
   const [amount, setAmount] = useState(50000); // Начальная сумма 50,000
   const [days, setDays] = useState(3);
 
@@ -38,7 +40,12 @@ const Calculator = () => {
   };
 
   const handleRequestBtnPress = () => {
-    Alert.alert("Оформить микрокредит", `Сумма: ${amount}, Срок: ${days} дней`);
+    navigation.navigate('CreditApplication', {
+      // Ваши параметры
+      paramName1: amount,
+      paramName2: days,
+      // Добавьте все необходимые параметры
+    });
   };
 
   return (
