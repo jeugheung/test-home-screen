@@ -40,18 +40,19 @@ const MobileInput = () => {
           </View>
         )}
       />
-      <TouchableOpacity>
+      {/* <TouchableOpacity>
         <View style={styles.button}>
           <Text style={styles.buttonText}>Показать значение</Text>
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   root: {
-    marginTop: 30,
+    // marginTop: 30,
+    marginBottom: 20
   },
   codeFieldRoot: {
     gap: 10,

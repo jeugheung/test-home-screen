@@ -49,6 +49,7 @@ const CategorySelector = () => {
         onRequestClose={() => setModalVisible(false)}
       >
         <TouchableOpacity
+          activeOpacity={1}
           style={styles.modalOverlay}
           onPress={() => setModalVisible(false)}
         />
@@ -177,6 +178,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 15, // Убираем радиус углов
     borderBottomRightRadius: 15, // Убираем радиус углов
     // padding: 16,
+
   },
   flatList: {
     backgroundColor: '#FFF',

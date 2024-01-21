@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 15,
     paddingTop: 23,
-    paddingBottom: 23,
+    paddingBottom: 30,
     minHeight: 300,
     borderRadius: 15,
     backgroundColor: '#FFF',

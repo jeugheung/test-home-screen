@@ -49,8 +49,8 @@ const CreditApplication = () => {
   const handleRequestBtnPress = () => {
     navigation.navigate('CreditConfirmation', {
       // Ваши параметры
-      paramName1: "amount",
-      paramName2: "days",
+      paramName1: amount,
+      paramName2: (amount * 1.2).toFixed(0),
       // Добавьте все необходимые параметры
     });
   };
@@ -95,7 +95,7 @@ const CreditApplication = () => {
           <View style={styles.deptItem}>
             <Image source={redDept}></Image>
             <Text style={styles.deptText}>Вы берете:</Text>
-            <Text style={styles.deptValue}>{amount}</Text>
+            <Text style={styles.deptValue}>{amount} тнг</Text>
           </View>
           <View style={styles.dividerLine}/>
           <View style={styles.deptItem}>
