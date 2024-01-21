@@ -15,6 +15,7 @@ import profileTabBar from "../assets/tab-bar-icons/profile-tab.png";
 import { useNavigation } from '@react-navigation/native';
 import CreditApplication from "../screens/CreditApplication";
 import CreditConfirmation from "../screens/CreditConfirmation";
+import CustomerProfile from "../screens/CustomerProfile";
 
 // TabBar
 const Tabs = createBottomTabNavigator();
@@ -31,6 +32,7 @@ function HomeStack() {
       <Stack.Screen name="Home" component={HomePage} />
       <Stack.Screen name="CreditApplication" component={CreditApplication} />
       <Stack.Screen name="CreditConfirmation" component={CreditConfirmation} />
+      <Stack.Screen name="CustomerProfile" component={CustomerProfile} />
     </Stack.Navigator>
   );
 }

@@ -39,6 +39,15 @@ const CreditConfirmation = ({}) => {
     setIsTimerExpired(false);
   };
 
+  const handleRequestBtnPress = () => {
+    navigation.navigate('CustomerProfile', {
+      // Ваши параметры
+      paramName1: "amount",
+      paramName2: "",
+      // Добавьте все необходимые параметры
+    });
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentBlock}>
@@ -92,7 +101,7 @@ const CreditConfirmation = ({}) => {
         </View>
 
         <View style={styles.submitBtnStack}>
-          <TouchableOpacity style={styles.acceptBtn}>
+          <TouchableOpacity style={styles.acceptBtn} onPress={handleRequestBtnPress}>
             <Text style={styles.acceptBtnText}>Согласен</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.cancelBtn}>
