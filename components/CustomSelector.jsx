@@ -2,10 +2,10 @@ import React, { useState, useRef } from 'react';
 import { View, Text, Modal, TouchableOpacity, FlatList, StyleSheet,Image, TouchableWithoutFeedback, ScrollView } from 'react-native';
 import menuDots from '../assets/menuDots.png'
 
-const CategorySelector = () => {
+const CategorySelector = ({scrollTo}) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
-
+  
   const categories = [
     'Помощь родственникам / друзьям',
     'Погашение другого микрокредита',
@@ -56,7 +56,7 @@ const CategorySelector = () => {
         <View
           style={[
             styles.modalContent,
-            { top: buttonPosition.y },
+            { top: buttonPosition.y  },
           ]}
         >
           <TouchableOpacity
@@ -92,8 +92,15 @@ const CategorySelector = () => {
       <TouchableOpacity
         ref={buttonRef}
         onPress={() => {
-          setModalVisible(true);
+          // setModalVisible(true);
+          scrollTo()
+     
           getButtonPosition();
+          setTimeout(() => {
+            setModalVisible(true);
+          
+            getButtonPosition();
+          }, 300); 
         }}
         style={styles.menuBlock}
         activeOpacity={1}

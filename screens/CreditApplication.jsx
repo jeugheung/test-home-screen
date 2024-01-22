@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, ScrollView} from 'react-native';
 import CalculatorItem from '../components/CalculatorItem';
 import { useNavigation } from '@react-navigation/native';
@@ -13,6 +13,7 @@ import Documents from '../components/Documents';
 
 const CreditApplication = () => {
   const navigation = useNavigation()
+  const scrollViewRef = useRef(null);
   const route = useRoute();
   const { paramName1, paramName2 } = route.params;
   const [amount, setAmount] = useState(paramName1); // Начальная сумма 50,000
@@ -46,20 +47,25 @@ const CreditApplication = () => {
     navigation.goBack();
   };
 
+  const scrollToEnd = () => {
+    scrollViewRef.current?.scrollTo({ y: 300, animated: true });
+  };
+
   const handleRequestBtnPress = () => {
-    navigation.navigate('CreditConfirmation', {
-      // Ваши параметры
-      paramName1: amount,
-      paramName2: (amount * 1.2).toFixed(0),
-      // Добавьте все необходимые параметры
-    });
+    // navigation.navigate('CreditConfirmation', {
+    //   // Ваши параметры
+    //   paramName1: amount,
+    //   paramName2: (amount * 1.2).toFixed(0),
+    //   // Добавьте все необходимые параметры
+    // });
+    scrollViewRef.current?.scrollTo({ y: 300, animated: true }); 
   };
   
 
   
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.contentBlock}>
+      <ScrollView style={styles.contentBlock} ref={scrollViewRef}>
         <View style={styles.header}>
           <TouchableOpacity onPress={handlePress}>
             <Image source={arrowLeft} />
@@ -107,7 +113,7 @@ const CreditApplication = () => {
 
         <View>
           <Text style={styles.subtitle}>Цель получения микрокредита</Text>
-          <CategorySelector/>
+          <CategorySelector scrollTo={scrollToEnd} />
         </View>
 
         <Documents/>
